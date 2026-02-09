@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Linkedin, Instagram, Youtube, Mail, MapPin, ChevronRight } from 'lucide-react';
+import { Linkedin, Instagram, Youtube, Mail, MapPin, ChevronRight, Globe } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
-  // Team members with provided image URLs
   const teamMembers = [
     { 
       name: 'Lucky Tiwari', 
@@ -19,7 +18,6 @@ const Footer: React.FC = () => {
     }
   ];
 
-  // Social Media Links with Actual Icons
   const socials = [
     { 
       name: 'LinkedIn', 
@@ -41,12 +39,23 @@ const Footer: React.FC = () => {
     }
   ];
 
+  const popularSearches = [
+    { name: "Internships in India", path: "/internships" },
+    { name: "Remote Python Internships", path: "/internships" },
+    { name: "Web Development Internships", path: "/internships" },
+    { name: "Data Science Internships", path: "/internships" },
+    { name: "Marketing Internships", path: "/internships" },
+    { name: "Online Courses with Certificates", path: "https://courses.internadda.com/" },
+    { name: "Internships in Delhi", path: "/internships" },
+    { name: "Summer Internships 2024", path: "/internships" }
+  ];
+
   return (
     <footer className="bg-slate-900 text-slate-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
           
-          {/* Brand Info */}
+          {/* Brand Info - Centered on Mobile */}
           <div className="lg:col-span-2 space-y-6 text-center md:text-left flex flex-col items-center md:items-start">
             <div className="flex items-center gap-3 mb-2">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center overflow-hidden shadow-lg">
@@ -78,7 +87,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Links Section */}
+          {/* Links Section - Centered on Mobile */}
           <div className="grid grid-cols-2 gap-8 lg:col-span-2">
             <div className="text-center md:text-left">
               <h3 className="text-white font-semibold text-lg mb-6">Platform</h3>
@@ -101,33 +110,52 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Leadership Section */}
-          <div className="hidden lg:block">
-            <h3 className="text-white font-semibold text-lg mb-6 text-center lg:text-left">Our Leadership</h3>
-            <div className="space-y-4">
+          {/* Leadership Section - Centered on Mobile */}
+          <div className="lg:block">
+            <h3 className="text-white font-semibold text-lg mb-6 text-center md:text-left">Our Leadership</h3>
+            <div className="space-y-4 flex flex-col items-center md:items-start">
               {teamMembers.map((member, idx) => (
-                <div key={idx} className="flex items-center gap-3 p-3 bg-slate-800/40 rounded-xl border border-slate-800">
+                <div key={idx} className="flex items-center gap-3 p-3 bg-slate-800/40 rounded-xl border border-slate-800 w-full max-w-[250px] md:max-w-none">
                   <img 
                     src={member.image} 
                     alt={member.name}
                     className="w-10 h-10 rounded-full object-cover border border-slate-700 bg-slate-800"
                   />
-                  <div>
+                  <div className="text-left">
                     <div className="text-xs font-bold text-white">{member.name}</div>
                     <div className="text-[10px] text-slate-400">{member.role}</div>
                   </div>
                 </div>
               ))}
-              <Link to="/team" className="text-indigo-400 hover:text-indigo-300 text-xs font-bold flex items-center gap-1 mt-2">
+              <Link to="/team" className="text-indigo-400 hover:text-indigo-300 text-xs font-bold flex items-center gap-1 mt-2 justify-center md:justify-start">
                 Meet the full team <ChevronRight size={14} />
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Contact & Newsletter Bar */}
-        <div className="mt-16 pt-8 border-t border-slate-800 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {/* Contact Details */}
+        {/* SEO - Popular Searches Section - Centered on Mobile */}
+        <div className="mt-16 pt-8 border-t border-slate-800 text-center md:text-left">
+          <h4 className="text-white font-bold text-sm mb-6 flex items-center justify-center md:justify-start gap-2">
+            <Globe size={16} className="text-indigo-400" /> Popular Internship Searches
+          </h4>
+          <div className="flex flex-wrap gap-x-6 gap-y-3 justify-center md:justify-start">
+            {popularSearches.map((search, idx) => (
+              search.path.startsWith('http') ? (
+                <a key={idx} href={search.path} target="_blank" rel="noopener noreferrer" className="text-[12px] text-slate-500 hover:text-indigo-400 transition-colors">
+                  {search.name}
+                </a>
+              ) : (
+                <Link key={idx} to={search.path} className="text-[12px] text-slate-500 hover:text-indigo-400 transition-colors">
+                  {search.name}
+                </Link>
+              )
+            ))}
+          </div>
+        </div>
+
+        {/* Contact & Newsletter Bar - Centered on Mobile */}
+        <div className="mt-12 pt-8 border-t border-slate-800 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           <div className="text-center md:text-left space-y-3">
             <h4 className="text-white font-bold text-sm mb-4">Contact Support</h4>
             <a href="mailto:support@internadda.com" className="flex items-center justify-center md:justify-start gap-2 text-sm text-slate-400 hover:text-white transition-colors">
@@ -138,7 +166,6 @@ const Footer: React.FC = () => {
             </p>
           </div>
 
-          {/* Actual Social Logos */}
           <div className="flex flex-col items-center justify-center">
             <h4 className="text-white font-bold text-sm mb-4">Follow Our Journey</h4>
             <div className="flex gap-4">
@@ -157,7 +184,6 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Newsletter */}
           <div className="flex flex-col items-center md:items-end">
             <h4 className="text-white font-bold text-sm mb-4">Career Updates</h4>
             <div className="flex w-full max-w-xs">
@@ -173,7 +199,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-{/* Bottom Bar */}
+        {/* Bottom Bar - Centered on Mobile */}
         <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-center">
           <p className="text-[11px] text-slate-500">
             © {currentYear} Internadda Platform. All rights reserved. 
