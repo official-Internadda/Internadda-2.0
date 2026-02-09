@@ -8,20 +8,21 @@ interface InternshipCardProps {
 
 const InternshipCard: React.FC<InternshipCardProps> = ({ internship }) => {
   // Mapping unique images to categories in sequence
-  const categoryImages: Record<string, string> = {
-    'Python': 'https://iili.io/fphukua.md.png',
-    'Web Development': 'https://iili.io/fpXZ9M7.png',
-    'Data Science': 'https://iili.io/fpXQynS.png',
-    'Marketing': 'https://iili.io/fpX77hG.png',
-    'Design': 'https://iili.io/fphuvwJ.md.png',
-    'Finance': 'https://iili.io/fphNljf.png',
-    'Backend Systems': 'https://iili.io/fphNcTG.md.png',
-    'AI/ML Research': 'https://iili.io/fphNYps.md.png',
-    'Content Strategy': 'https://iili.io/fphN7vn.md.png',
-  };
+const ALL_IMAGES = [
+  'https://iili.io/fphukua.md.png', // 1: Python
+  'https://iili.io/fpXZ9M7.png',    // 2: Web Dev
+  'https://iili.io/fpXQynS.png',    // 3: Data Science
+  'https://iili.io/fpX77hG.png',    // 4: Marketing
+  'https://iili.io/fphuvwJ.md.png', // 5: Design
+  'https://iili.io/fphNljf.png',    // 6: Finance
+  'https://iili.io/fphNcTG.md.png', // 7: Backend Systems
+  'https://iili.io/fphNYps.md.png', // 8: AI/ML Research
+  'https://iili.io/fphN7vn.md.png', // 9: Content Strategy
+];
 
-  // Select the specific image for the category, or use a default if not found
-  const selectedImage = categoryImages[internship.category] || "https://iili.io/fpX77hG.png";
+// Calculate index based on ID (assuming IDs are 1-9)
+const imageIndex = (Number(internship.id) - 1) % ALL_IMAGES.length;
+const selectedImage = ALL_IMAGES[imageIndex];
 
   const COMPANY_LOGOS = [
     "https://iili.io/fbAXcYB.png", 
