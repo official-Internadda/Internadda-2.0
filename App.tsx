@@ -20,8 +20,8 @@ import TeamPage from "./pages/TeamPage";
 import HiringProcess from "./pages/HiringProcess";
 import AboutUs from "./pages/AboutUs";
 import { User } from "./types";
-import OfferLetterPage from "./pages/OfferLetterPage";
-import InterviewDetailsPage from "./pages/InterviewDetailsPage";
+import OfferLetterPage from './pages/OfferLetterPage';
+import InterviewDetailsPage from './pages/InterviewDetailsPage';
 
 const ScrollToTop = () => {
   const { pathname, search } = useLocation();
@@ -73,6 +73,32 @@ const App: React.FC = () => {
         <p className="mt-6 text-gray-500 text-sm tracking-wide font-medium">
           Securing your professional future…
         </p>
+        <style>{`
+          @keyframes logo-float {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+          }
+          .animate-logo-float { animation: logo-float 2.4s ease-in-out infinite; }
+          .loader {
+            width: 130px;
+            height: 14px;
+            display: grid;
+            box-shadow: 0 3px 0 #2563eb;
+          }
+          .loader:before, .loader:after {
+            content: "";
+            grid-area: 1/1;
+            background: radial-gradient(circle closest-side, var(--c, #2563eb) 92%, #0000) 0 0 / calc(100%/5) 100%;
+            animation: l4 1s infinite linear;
+          }
+          .loader:after {
+            --c: #1e40af;
+            background-color: #ffffff;
+            box-shadow: 0 -2px 0 0 #2563eb;
+            clip-path: inset(-2px calc(50% - 12px));
+          }
+          @keyframes l4 { 100% { background-position: calc(100%/4) 0; } }
+        `}</style>
       </div>
     );
   }
@@ -83,7 +109,6 @@ const App: React.FC = () => {
       <div className="flex flex-col min-h-screen bg-slate-50">
         <Header user={user} onLogout={handleLogout} />
 
-        {/* 🔥 IMPORTANT: NO width container here */}
         <main className="flex-grow pt-16">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -93,10 +118,12 @@ const App: React.FC = () => {
             <Route path="/team" element={<TeamPage />} />
             <Route path="/hiring-process" element={<HiringProcess />} />
             <Route path="/about" element={<AboutUs />} />
-
+            
+            {/* Auth Routes - Redirect to /profile instead of /dashboard */}
             <Route path="/login" element={!user ? <AuthPage mode="login" setUser={setUser} /> : <Navigate to="/profile" replace />} />
             <Route path="/signup" element={!user ? <AuthPage mode="signup" setUser={setUser} /> : <Navigate to="/profile" replace />} />
 
+            {/* Protected Routes */}
             <Route path="/profile" element={user ? <Profile user={user} /> : <Navigate to="/login" replace />} />
             <Route path="/settings" element={user ? <Settings user={user} setUser={setUser} /> : <Navigate to="/login" replace />} />
             <Route path="/offer-letter" element={user ? <OfferLetterPage /> : <Navigate to="/login" replace />} />
@@ -109,10 +136,10 @@ const App: React.FC = () => {
             <Route path="/result/:id" element={user ? <ResultPage user={user} /> : <Navigate to="/login" replace />} />
             <Route path="/interview-details/:id" element={user ? <InterviewDetailsPage /> : <Navigate to="/login" replace />} />
 
+            {/* Fallback */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
-
         <Footer />
       </div>
     </Router>
