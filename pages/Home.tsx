@@ -68,7 +68,7 @@ const Home: React.FC = () => {
     <div className="bg-[#F8FAFC]">
       {/* 1. HERO SECTION - CENTERED FOR MOBILE */}
       <section className="relative pt-12 pb-20 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-50 border border-emerald-100 text-emerald-700 font-bold text-xs mb-6 uppercase tracking-wider">
@@ -169,7 +169,7 @@ const Home: React.FC = () => {
 
       {/* 2. INDUSTRY METRICS */}
       <div className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { label: 'Active Roles', value: '300+', icon: Briefcase },
@@ -192,7 +192,7 @@ const Home: React.FC = () => {
       </div>
 
       {/* 3. INTERNSHIP MARKETPLACE - SHOW ONLY 3 */}
-      <section className="py-16 max-w-7xl mx-auto px-4" id="internships">
+      <section className="py-16 container mx-auto px-4" id="internships">
         <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
           <div className="text-center md:text-left">
             <h2 className="text-2xl font-bold text-slate-900">Featured Opportunities</h2>
@@ -236,7 +236,7 @@ const Home: React.FC = () => {
 
       {/* 4. VERIFICATION WORKFLOW */}
       <section className="py-16 bg-slate-900 text-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-6">How we ensure quality.</h2>
