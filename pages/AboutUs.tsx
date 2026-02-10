@@ -121,7 +121,7 @@ const teamMembers = [
           }}
         ></div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="text-center">
             <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full border border-indigo-100 shadow-sm mb-8">
               <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
@@ -164,7 +164,7 @@ const teamMembers = [
       </div>
 
       {/* Emotional Impact Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-slate-900 mb-6">
             More Than Just Internships
@@ -250,7 +250,7 @@ const teamMembers = [
 
       {/* Premium Certificate Showcase */}
       <div className="bg-gradient-to-r from-slate-900 to-slate-800 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-white mb-12">
             <h2 className="text-4xl font-bold mb-6">
               Your Success, Documented
@@ -317,7 +317,7 @@ const teamMembers = [
       </div>
 
       {/* Brand Recognition */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-slate-900 mb-6">
             Trusted by the Best
