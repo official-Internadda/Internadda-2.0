@@ -109,37 +109,41 @@ const App: React.FC = () => {
       <div className="flex flex-col min-h-screen bg-slate-50">
         <Header user={user} onLogout={handleLogout} />
 
+        {/* MAIN WRAPPER */}
         <main className="flex-grow pt-16">
-          {/* CONTENT MATCHER: This container mirrors the Header's width and padding exactly */}
-          <div className="max-w-7xl mx-auto px-4 md:px-6">
-             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/internships" element={<InternshipsPage />} />
-                <Route path="/internship/:id" element={<InternshipDetail />} />
-                <Route path="/success-stories" element={<SuccessStories />} />
-                <Route path="/team" element={<TeamPage />} />
-                <Route path="/hiring-process" element={<HiringProcess />} />
-                <Route path="/about" element={<AboutUs />} />
-                
-                <Route path="/login" element={!user ? <AuthPage mode="login" setUser={setUser} /> : <Navigate to="/profile" replace />} />
-                <Route path="/signup" element={!user ? <AuthPage mode="signup" setUser={setUser} /> : <Navigate to="/profile" replace />} />
+          {/* ALIGNMENT CONTAINER: 
+              Matches Header's "container mx-auto px-4 md:px-6" from Header.tsx 
+          */}
+          <div className="max-w-7xl mx-auto px-4 md:px-6 py-8">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/internships" element={<InternshipsPage />} />
+              <Route path="/internship/:id" element={<InternshipDetail />} />
+              <Route path="/success-stories" element={<SuccessStories />} />
+              <Route path="/team" element={<TeamPage />} />
+              <Route path="/hiring-process" element={<HiringProcess />} />
+              <Route path="/about" element={<AboutUs />} />
+              
+              <Route path="/login" element={!user ? <AuthPage mode="login" setUser={setUser} /> : <Navigate to="/profile" replace />} />
+              <Route path="/signup" element={!user ? <AuthPage mode="signup" setUser={setUser} /> : <Navigate to="/profile" replace />} />
 
-                <Route path="/profile" element={user ? <Profile user={user} /> : <Navigate to="/login" replace />} />
-                <Route path="/settings" element={user ? <Settings user={user} setUser={setUser} /> : <Navigate to="/login" replace />} />
-                <Route path="/offer-letter" element={user ? <OfferLetterPage /> : <Navigate to="/login" replace />} />
-                <Route path="/apply/:id" element={user ? <ApplyPage /> : <Navigate to="/login" replace />} />
-                <Route path="/payment/:id" element={user ? <PaymentPage /> : <Navigate to="/login" replace />} />
-                <Route path="/payment-success" element={<PaymentSuccess />} />
-                <Route path="/test/practice/:id" element={user ? <TestEngine user={user} /> : <Navigate to="/login" replace />} />
-                <Route path="/test/real/:id" element={user ? <ProfessionalTestEngine /> : <Navigate to="/login" replace />} />
-                <Route path="/tests" element={user ? <Tests user={user} /> : <Navigate to="/login" replace />} />
-                <Route path="/result/:id" element={user ? <ResultPage user={user} /> : <Navigate to="/login" replace />} />
-                <Route path="/interview-details/:id" element={user ? <InterviewDetailsPage /> : <Navigate to="/login" replace />} />
+              <Route path="/profile" element={user ? <Profile user={user} /> : <Navigate to="/login" replace />} />
+              <Route path="/settings" element={user ? <Settings user={user} setUser={setUser} /> : <Navigate to="/login" replace />} />
+              <Route path="/offer-letter" element={user ? <OfferLetterPage /> : <Navigate to="/login" replace />} />
+              <Route path="/apply/:id" element={user ? <ApplyPage /> : <Navigate to="/login" replace />} />
+              <Route path="/payment/:id" element={user ? <PaymentPage /> : <Navigate to="/login" replace />} />
+              <Route path="/payment-success" element={<PaymentSuccess />} />
+              <Route path="/test/practice/:id" element={user ? <TestEngine user={user} /> : <Navigate to="/login" replace />} />
+              <Route path="/test/real/:id" element={user ? <ProfessionalTestEngine /> : <Navigate to="/login" replace />} />
+              <Route path="/tests" element={user ? <Tests user={user} /> : <Navigate to="/login" replace />} />
+              <Route path="/result/:id" element={user ? <ResultPage user={user} /> : <Navigate to="/login" replace />} />
+              <Route path="/interview-details/:id" element={user ? <InterviewDetailsPage /> : <Navigate to="/login" replace />} />
 
-                <Route path="*" element={<Navigate to="/" replace />} />
-              </Routes>
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
           </div>
         </main>
+        
         <Footer />
       </div>
     </Router>
